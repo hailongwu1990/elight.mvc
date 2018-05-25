@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elight.mapper.SYS_ROLEMapper" >
+  <resultMap id="BaseResultMap" type="com.elight.model.SYS_ROLE" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ORGANIZE_ID" property="organizeId" jdbcType="VARCHAR" />
+    <result column="ENCODE" property="encode" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="SMALLINT" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ALLOW_EDIT" property="allowEdit" jdbcType="BIT" />
+    <result column="DELETE_MARK" property="deleteMark" jdbcType="BIT" />
+    <result column="IS_ENABLED" property="isEnabled" jdbcType="BIT" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="SORT_CODE" property="sortCode" jdbcType="INTEGER" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ORGANIZE_ID, ENCODE, TYPE, NAME, ALLOW_EDIT, DELETE_MARK, IS_ENABLED, REMARK, 
+    SORT_CODE, CREATE_USER, CREATE_TIME, MODIFY_USER, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_role
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elight.model.SYS_ROLE" >
+    insert into sys_role (ID, ORGANIZE_ID, ENCODE, 
+      TYPE, NAME, ALLOW_EDIT, 
+      DELETE_MARK, IS_ENABLED, REMARK, 
+      SORT_CODE, CREATE_USER, CREATE_TIME, 
+      MODIFY_USER, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{organizeId,jdbcType=VARCHAR}, #{encode,jdbcType=VARCHAR}, 
+      #{type,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, #{allowEdit,jdbcType=BIT}, 
+      #{deleteMark,jdbcType=BIT}, #{isEnabled,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}, 
+      #{sortCode,jdbcType=INTEGER}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUser,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elight.model.SYS_ROLE" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="organizeId != null" >
+        ORGANIZE_ID,
+      </if>
+      <if test="encode != null" >
+        ENCODE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="allowEdit != null" >
+        ALLOW_EDIT,
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK,
+      </if>
+      <if test="isEnabled != null" >
+        IS_ENABLED,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="sortCode != null" >
+        SORT_CODE,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="organizeId != null" >
+        #{organizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="allowEdit != null" >
+        #{allowEdit,jdbcType=BIT},
+      </if>
+      <if test="deleteMark != null" >
+        #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortCode != null" >
+        #{sortCode,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elight.model.SYS_ROLE" >
+    update sys_role
+    <set >
+      <if test="organizeId != null" >
+        ORGANIZE_ID = #{organizeId,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null" >
+        ENCODE = #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="allowEdit != null" >
+        ALLOW_EDIT = #{allowEdit,jdbcType=BIT},
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="isEnabled != null" >
+        IS_ENABLED = #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortCode != null" >
+        SORT_CODE = #{sortCode,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elight.model.SYS_ROLE" >
+    update sys_role
+    set ORGANIZE_ID = #{organizeId,jdbcType=VARCHAR},
+      ENCODE = #{encode,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=SMALLINT},
+      NAME = #{name,jdbcType=VARCHAR},
+      ALLOW_EDIT = #{allowEdit,jdbcType=BIT},
+      DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      IS_ENABLED = #{isEnabled,jdbcType=BIT},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SORT_CODE = #{sortCode,jdbcType=INTEGER},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

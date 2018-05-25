@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elight.mapper.SYS_USER_LOGONMapper" >
+  <resultMap id="BaseResultMap" type="com.elight.model.SYS_USER_LOGON" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="SECRETKEY" property="secretkey" jdbcType="VARCHAR" />
+    <result column="PREVVISIT_TIME" property="prevvisitTime" jdbcType="TIMESTAMP" />
+    <result column="LASTVISIT_TIME" property="lastvisitTime" jdbcType="TIMESTAMP" />
+    <result column="CHANGEPWD_TIME" property="changepwdTime" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_COUNT" property="loginCount" jdbcType="INTEGER" />
+    <result column="ALLOW_MULTIUSERON_LINE" property="allowMultiuseronLine" jdbcType="BIT" />
+    <result column="IS_ONLINE" property="isOnline" jdbcType="BIT" />
+    <result column="QUESTION" property="question" jdbcType="VARCHAR" />
+    <result column="ANSWER_QUESTION" property="answerQuestion" jdbcType="VARCHAR" />
+    <result column="CHECK_IP_ADDRESS" property="checkIpAddress" jdbcType="BIT" />
+    <result column="LANGUAGE" property="language" jdbcType="VARCHAR" />
+    <result column="THEME" property="theme" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, PASSWORD, SECRETKEY, PREVVISIT_TIME, LASTVISIT_TIME, CHANGEPWD_TIME, 
+    LOGIN_COUNT, ALLOW_MULTIUSERON_LINE, IS_ONLINE, QUESTION, ANSWER_QUESTION, CHECK_IP_ADDRESS, 
+    LANGUAGE, THEME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_logon
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_user_logon
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elight.model.SYS_USER_LOGON" >
+    insert into sys_user_logon (ID, USER_ID, PASSWORD, 
+      SECRETKEY, PREVVISIT_TIME, LASTVISIT_TIME, 
+      CHANGEPWD_TIME, LOGIN_COUNT, ALLOW_MULTIUSERON_LINE, 
+      IS_ONLINE, QUESTION, ANSWER_QUESTION, 
+      CHECK_IP_ADDRESS, LANGUAGE, THEME
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{secretkey,jdbcType=VARCHAR}, #{prevvisitTime,jdbcType=TIMESTAMP}, #{lastvisitTime,jdbcType=TIMESTAMP}, 
+      #{changepwdTime,jdbcType=TIMESTAMP}, #{loginCount,jdbcType=INTEGER}, #{allowMultiuseronLine,jdbcType=BIT}, 
+      #{isOnline,jdbcType=BIT}, #{question,jdbcType=VARCHAR}, #{answerQuestion,jdbcType=VARCHAR}, 
+      #{checkIpAddress,jdbcType=BIT}, #{language,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elight.model.SYS_USER_LOGON" >
+    insert into sys_user_logon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="secretkey != null" >
+        SECRETKEY,
+      </if>
+      <if test="prevvisitTime != null" >
+        PREVVISIT_TIME,
+      </if>
+      <if test="lastvisitTime != null" >
+        LASTVISIT_TIME,
+      </if>
+      <if test="changepwdTime != null" >
+        CHANGEPWD_TIME,
+      </if>
+      <if test="loginCount != null" >
+        LOGIN_COUNT,
+      </if>
+      <if test="allowMultiuseronLine != null" >
+        ALLOW_MULTIUSERON_LINE,
+      </if>
+      <if test="isOnline != null" >
+        IS_ONLINE,
+      </if>
+      <if test="question != null" >
+        QUESTION,
+      </if>
+      <if test="answerQuestion != null" >
+        ANSWER_QUESTION,
+      </if>
+      <if test="checkIpAddress != null" >
+        CHECK_IP_ADDRESS,
+      </if>
+      <if test="language != null" >
+        LANGUAGE,
+      </if>
+      <if test="theme != null" >
+        THEME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="prevvisitTime != null" >
+        #{prevvisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastvisitTime != null" >
+        #{lastvisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changepwdTime != null" >
+        #{changepwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null" >
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="allowMultiuseronLine != null" >
+        #{allowMultiuseronLine,jdbcType=BIT},
+      </if>
+      <if test="isOnline != null" >
+        #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answerQuestion != null" >
+        #{answerQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIpAddress != null" >
+        #{checkIpAddress,jdbcType=BIT},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elight.model.SYS_USER_LOGON" >
+    update sys_user_logon
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        SECRETKEY = #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="prevvisitTime != null" >
+        PREVVISIT_TIME = #{prevvisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastvisitTime != null" >
+        LASTVISIT_TIME = #{lastvisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changepwdTime != null" >
+        CHANGEPWD_TIME = #{changepwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null" >
+        LOGIN_COUNT = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="allowMultiuseronLine != null" >
+        ALLOW_MULTIUSERON_LINE = #{allowMultiuseronLine,jdbcType=BIT},
+      </if>
+      <if test="isOnline != null" >
+        IS_ONLINE = #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="question != null" >
+        QUESTION = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answerQuestion != null" >
+        ANSWER_QUESTION = #{answerQuestion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIpAddress != null" >
+        CHECK_IP_ADDRESS = #{checkIpAddress,jdbcType=BIT},
+      </if>
+      <if test="language != null" >
+        LANGUAGE = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null" >
+        THEME = #{theme,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elight.model.SYS_USER_LOGON" >
+    update sys_user_logon
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      SECRETKEY = #{secretkey,jdbcType=VARCHAR},
+      PREVVISIT_TIME = #{prevvisitTime,jdbcType=TIMESTAMP},
+      LASTVISIT_TIME = #{lastvisitTime,jdbcType=TIMESTAMP},
+      CHANGEPWD_TIME = #{changepwdTime,jdbcType=TIMESTAMP},
+      LOGIN_COUNT = #{loginCount,jdbcType=INTEGER},
+      ALLOW_MULTIUSERON_LINE = #{allowMultiuseronLine,jdbcType=BIT},
+      IS_ONLINE = #{isOnline,jdbcType=BIT},
+      QUESTION = #{question,jdbcType=VARCHAR},
+      ANSWER_QUESTION = #{answerQuestion,jdbcType=VARCHAR},
+      CHECK_IP_ADDRESS = #{checkIpAddress,jdbcType=BIT},
+      LANGUAGE = #{language,jdbcType=VARCHAR},
+      THEME = #{theme,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

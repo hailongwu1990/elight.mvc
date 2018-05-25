@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elight.mapper.SYS_ORGANIZEMapper" >
+  <resultMap id="BaseResultMap" type="com.elight.model.SYS_ORGANIZE" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="LAYER" property="layer" jdbcType="INTEGER" />
+    <result column="ENCODE" property="encode" jdbcType="VARCHAR" />
+    <result column="FULL_NAME" property="fullName" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="SMALLINT" />
+    <result column="MANAGER_ID" property="managerId" jdbcType="VARCHAR" />
+    <result column="TELE_PHONE" property="telePhone" jdbcType="VARCHAR" />
+    <result column="WECHAT" property="wechat" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="SORTCODE" property="sortcode" jdbcType="INTEGER" />
+    <result column="DELETE_MARK" property="deleteMark" jdbcType="BIT" />
+    <result column="IS_ENABLED" property="isEnabled" jdbcType="BIT" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PARENT_ID, LAYER, ENCODE, FULL_NAME, TYPE, MANAGER_ID, TELE_PHONE, WECHAT, FAX, 
+    EMAIL, ADDRESS, SORTCODE, DELETE_MARK, IS_ENABLED, REMARK, CREATE_USER, CREATE_TIME, 
+    MODIFY_USER, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_organize
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_organize
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elight.model.SYS_ORGANIZE" >
+    insert into sys_organize (ID, PARENT_ID, LAYER, 
+      ENCODE, FULL_NAME, TYPE, 
+      MANAGER_ID, TELE_PHONE, WECHAT, 
+      FAX, EMAIL, ADDRESS, 
+      SORTCODE, DELETE_MARK, IS_ENABLED, 
+      REMARK, CREATE_USER, CREATE_TIME, 
+      MODIFY_USER, MODIFY_TIME)
+    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=VARCHAR}, #{layer,jdbcType=INTEGER}, 
+      #{encode,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, 
+      #{managerId,jdbcType=VARCHAR}, #{telePhone,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{sortcode,jdbcType=INTEGER}, #{deleteMark,jdbcType=BIT}, #{isEnabled,jdbcType=BIT}, 
+      #{remark,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUser,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elight.model.SYS_ORGANIZE" >
+    insert into sys_organize
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="layer != null" >
+        LAYER,
+      </if>
+      <if test="encode != null" >
+        ENCODE,
+      </if>
+      <if test="fullName != null" >
+        FULL_NAME,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="managerId != null" >
+        MANAGER_ID,
+      </if>
+      <if test="telePhone != null" >
+        TELE_PHONE,
+      </if>
+      <if test="wechat != null" >
+        WECHAT,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="sortcode != null" >
+        SORTCODE,
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK,
+      </if>
+      <if test="isEnabled != null" >
+        IS_ENABLED,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="managerId != null" >
+        #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null" >
+        #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="deleteMark != null" >
+        #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elight.model.SYS_ORGANIZE" >
+    update sys_organize
+    <set >
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        LAYER = #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="encode != null" >
+        ENCODE = #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        FULL_NAME = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="managerId != null" >
+        MANAGER_ID = #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="telePhone != null" >
+        TELE_PHONE = #{telePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        WECHAT = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sortcode != null" >
+        SORTCODE = #{sortcode,jdbcType=INTEGER},
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="isEnabled != null" >
+        IS_ENABLED = #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elight.model.SYS_ORGANIZE" >
+    update sys_organize
+    set PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      LAYER = #{layer,jdbcType=INTEGER},
+      ENCODE = #{encode,jdbcType=VARCHAR},
+      FULL_NAME = #{fullName,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=SMALLINT},
+      MANAGER_ID = #{managerId,jdbcType=VARCHAR},
+      TELE_PHONE = #{telePhone,jdbcType=VARCHAR},
+      WECHAT = #{wechat,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      SORTCODE = #{sortcode,jdbcType=INTEGER},
+      DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      IS_ENABLED = #{isEnabled,jdbcType=BIT},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

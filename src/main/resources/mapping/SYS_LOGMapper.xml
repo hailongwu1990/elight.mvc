@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elight.mapper.SYS_LOGMapper" >
+  <resultMap id="BaseResultMap" type="com.elight.model.SYS_LOG" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LOG_LEVEL" property="logLevel" jdbcType="VARCHAR" />
+    <result column="OPERATION" property="operation" jdbcType="VARCHAR" />
+    <result column="MESSAGE" property="message" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="IP_ADDRESS" property="ipAddress" jdbcType="VARCHAR" />
+    <result column="BROWSER" property="browser" jdbcType="VARCHAR" />
+    <result column="STACK_TRACE" property="stackTrace" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CREATE_TIME, LOG_LEVEL, OPERATION, MESSAGE, ACCOUNT, REAL_NAME, IP, IP_ADDRESS, 
+    BROWSER, STACK_TRACE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_log
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elight.model.SYS_LOG" >
+    insert into sys_log (ID, CREATE_TIME, LOG_LEVEL, 
+      OPERATION, MESSAGE, ACCOUNT, 
+      REAL_NAME, IP, IP_ADDRESS, 
+      BROWSER, STACK_TRACE)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{logLevel,jdbcType=VARCHAR}, 
+      #{operation,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{ipAddress,jdbcType=VARCHAR}, 
+      #{browser,jdbcType=VARCHAR}, #{stackTrace,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elight.model.SYS_LOG" >
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="logLevel != null" >
+        LOG_LEVEL,
+      </if>
+      <if test="operation != null" >
+        OPERATION,
+      </if>
+      <if test="message != null" >
+        MESSAGE,
+      </if>
+      <if test="account != null" >
+        ACCOUNT,
+      </if>
+      <if test="realName != null" >
+        REAL_NAME,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS,
+      </if>
+      <if test="browser != null" >
+        BROWSER,
+      </if>
+      <if test="stackTrace != null" >
+        STACK_TRACE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logLevel != null" >
+        #{logLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="stackTrace != null" >
+        #{stackTrace,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elight.model.SYS_LOG" >
+    update sys_log
+    <set >
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logLevel != null" >
+        LOG_LEVEL = #{logLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        OPERATION = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        BROWSER = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="stackTrace != null" >
+        STACK_TRACE = #{stackTrace,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elight.model.SYS_LOG" >
+    update sys_log
+    set CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LOG_LEVEL = #{logLevel,jdbcType=VARCHAR},
+      OPERATION = #{operation,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      REAL_NAME = #{realName,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      BROWSER = #{browser,jdbcType=VARCHAR},
+      STACK_TRACE = #{stackTrace,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

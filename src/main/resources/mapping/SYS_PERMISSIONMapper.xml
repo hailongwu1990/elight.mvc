@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elight.mapper.SYS_PERMISSIONMapper" >
+  <resultMap id="BaseResultMap" type="com.elight.model.SYS_PERMISSION" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="LAYER" property="layer" jdbcType="INTEGER" />
+    <result column="ENCODE" property="encode" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="JS_EVENT" property="jsEvent" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="SORT_CODE" property="sortCode" jdbcType="INTEGER" />
+    <result column="IS_PUBLIC" property="isPublic" jdbcType="BIT" />
+    <result column="IS_ENABLE" property="isEnable" jdbcType="BIT" />
+    <result column="IS_EDIT" property="isEdit" jdbcType="BIT" />
+    <result column="DELETE_MARK" property="deleteMark" jdbcType="BIT" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PARENT_ID, LAYER, ENCODE, NAME, JS_EVENT, ICON, URL, REMARK, TYPE, SORT_CODE, 
+    IS_PUBLIC, IS_ENABLE, IS_EDIT, DELETE_MARK, CREATE_USER, CREATE_TIME, MODIFY_USER, 
+    MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permission
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_permission
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elight.model.SYS_PERMISSION" >
+    insert into sys_permission (ID, PARENT_ID, LAYER, 
+      ENCODE, NAME, JS_EVENT, 
+      ICON, URL, REMARK, 
+      TYPE, SORT_CODE, IS_PUBLIC, 
+      IS_ENABLE, IS_EDIT, DELETE_MARK, CREATE_USER, 
+      CREATE_TIME, MODIFY_USER, MODIFY_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=VARCHAR}, #{layer,jdbcType=INTEGER}, 
+      #{encode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{jsEvent,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{sortCode,jdbcType=INTEGER}, #{isPublic,jdbcType=BIT}, 
+      #{isEnable,jdbcType=BIT}, #{isEdit,jdbcType=BIT}, #{deleteMark,jdbcType=BIT}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elight.model.SYS_PERMISSION" >
+    insert into sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="layer != null" >
+        LAYER,
+      </if>
+      <if test="encode != null" >
+        ENCODE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="jsEvent != null" >
+        JS_EVENT,
+      </if>
+      <if test="icon != null" >
+        ICON,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="sortCode != null" >
+        SORT_CODE,
+      </if>
+      <if test="isPublic != null" >
+        IS_PUBLIC,
+      </if>
+      <if test="isEnable != null" >
+        IS_ENABLE,
+      </if>
+      <if test="isEdit != null" >
+        IS_EDIT,
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jsEvent != null" >
+        #{jsEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sortCode != null" >
+        #{sortCode,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        #{isPublic,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="isEdit != null" >
+        #{isEdit,jdbcType=BIT},
+      </if>
+      <if test="deleteMark != null" >
+        #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elight.model.SYS_PERMISSION" >
+    update sys_permission
+    <set >
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null" >
+        LAYER = #{layer,jdbcType=INTEGER},
+      </if>
+      <if test="encode != null" >
+        ENCODE = #{encode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jsEvent != null" >
+        JS_EVENT = #{jsEvent,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sortCode != null" >
+        SORT_CODE = #{sortCode,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        IS_PUBLIC = #{isPublic,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null" >
+        IS_ENABLE = #{isEnable,jdbcType=BIT},
+      </if>
+      <if test="isEdit != null" >
+        IS_EDIT = #{isEdit,jdbcType=BIT},
+      </if>
+      <if test="deleteMark != null" >
+        DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elight.model.SYS_PERMISSION" >
+    update sys_permission
+    set PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      LAYER = #{layer,jdbcType=INTEGER},
+      ENCODE = #{encode,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      JS_EVENT = #{jsEvent,jdbcType=VARCHAR},
+      ICON = #{icon,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=INTEGER},
+      SORT_CODE = #{sortCode,jdbcType=INTEGER},
+      IS_PUBLIC = #{isPublic,jdbcType=BIT},
+      IS_ENABLE = #{isEnable,jdbcType=BIT},
+      IS_EDIT = #{isEdit,jdbcType=BIT},
+      DELETE_MARK = #{deleteMark,jdbcType=BIT},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_USER = #{modifyUser,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
